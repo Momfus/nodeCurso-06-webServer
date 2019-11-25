@@ -1,3 +1,5 @@
+// Usando http sin express, video 64
+
 const http = require('http'); // Ya esta incluido en node
 
 // para escuchar peticiones http, debemos crear el servidor
