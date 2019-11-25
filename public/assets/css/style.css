@@ -1,0 +1,14 @@
+/* Estilo personalizado agregado a la carpeta para el footer y otros */
+
+footer {
+
+    background-color: #353A3F;
+    color: white;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+
+    text-align: center;
+    padding: 20px;
+
+}
