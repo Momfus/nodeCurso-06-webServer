@@ -3,6 +3,8 @@ const app = express(); // Declarar variable como producto de la función express
 const hbs = require('hbs');
 require('./hbs/helpers'); // --> traer los helpers
 
+const port = process.env.PORT || 3000; // Obteniendo el puerto si es local o sino devuelve 3000
+
 // Esto es un middleware, una instrucción (callback) siempre no importa que url se solicite
 app.use( express.static( __dirname + '/public' ) ); // Cualquier persona puede ver aquí
 
@@ -43,8 +45,8 @@ app.get('/data', (req, res) => {
 // app.listen(3000); // Puerto escuchando
 
 // Para indicar no solo el puerto sino que puedo indicar una función al momento de empezar a escuchar el mismo
-app.listen(3000, () => {
+app.listen(port, () => {
 
-    console.log('Escuchando peticiones en el puerto 3000');
+    console.log(`Escuchando peticiones en el puerto ${ port }`);
 
 });
