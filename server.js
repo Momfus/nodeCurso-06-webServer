@@ -1,26 +1,34 @@
 const express = require('express');
 const app = express(); // Declarar variable como producto de la función express para usarlo.
- 
+const hbs = require('hbs');
+require('./hbs/helpers'); // --> traer los helpers
+
 // Esto es un middleware, una instrucción (callback) siempre no importa que url se solicite
 app.use( express.static( __dirname + '/public' ) ); // Cualquier persona puede ver aquí
 
+// Express HBS engine
+hbs.registerPartials( __dirname + '/views/parciales' ); // un directorio que tendrá todos los partcials
+app.set('view engine', 'hbs'); // par señalizar que use hbs por defecto para renderizar la pagina
+
+
+
 // Configurando la solicitud get cuando se accede a '/'
-// app.get('/', (req, res) => {
+app.get('/', (req, res) => {
   
-//     //res.send('Hola Mundo');
+    res.render( 'home', { // de esa mandera renderiza el home.hbs
 
-//     let salida = {
+        nombre: 'momFus arboLeo',
 
-//         nombre: 'Momfus',
-//         edad: 28,
-//         url: req.url
+    } ); 
 
-//     };
+});
 
+// Configurando la solicitud cuando se accede a '/about'
+app.get('/about', (req, res) => {
+  
+    res.render( 'about' );  // de esa mandera renderiza el about.hbs
 
-//     res.send( salida ); // Internamente sabe que es un objeto y lo serializa en formato de Json
-
-// });
+});
 
 //#region Si quiero uno para que trabaje en /data
 /*
